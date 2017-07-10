@@ -12,8 +12,11 @@ function MVVM(options) {
     this._initComputed();
 
     observe(data, this);
-
+    console.group("MVVM");
+    console.log(this);
+    console.groupEnd();
     this.$compile = new Compile(options.el || document.body, this)
+
 }
 
 MVVM.prototype = {

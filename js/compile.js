@@ -7,6 +7,9 @@ function Compile(el, vm) {
         this.init();
         this.$el.appendChild(this.$fragment);
     }
+    console.group("compele");
+    console.log(this);
+    console.groupEnd();
 }
 
 Compile.prototype = {
@@ -132,12 +135,16 @@ var compileUtil = {
 
     // 事件处理
     eventHandler: function(node, vm, exp, dir) {
+    console.group("eventHandler");
+    console.log(node, vm, exp, dir);
+    console.groupEnd();
         var eventType = dir.split(':')[1],
             fn = vm.$options.methods && vm.$options.methods[exp];
 
         if (eventType && fn) {
             node.addEventListener(eventType, fn.bind(vm), false);
         }
+        
     },
 
     _getVMVal: function(vm, exp) {
